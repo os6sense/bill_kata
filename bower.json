@@ -1,0 +1,20 @@
+{
+  "name": "billski",
+  "version": "0.0.0",
+  "homepage": "https://github.com/os6sense/bill_kata",
+  "authors": [
+    "os6sense <leej@sowhatresearch.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.2.1",
+    "sortable": "~0.6.0"
+  }
+}

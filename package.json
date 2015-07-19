@@ -1,0 +1,10 @@
+{
+    "name" : "Billski",
+    "version" : "0.1.0",
+    "author" : "Adrian Lee Jackson",
+    "private" : true,
+
+    "devDependencies" : {
+        "grunt" :                   "~0.4.0"
+    }
+}
