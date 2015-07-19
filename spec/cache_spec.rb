@@ -24,19 +24,19 @@ describe Billski::Cache do
     end
   end
 
-  let(:uri) { FULL_URI }
-  let(:response) { 'response' }
+  let(:resp) { VALID_BILL }
 
   describe '.cached?' do
     let(:not_cached_uri) { 'www.different.com' }
+
     context 'when a url has been cached' do
-      before(:each) { described_class.cache(uri, response) }
+      before(:each) { described_class.cache(FULL_URI, resp) }
       it 'returns true' do
-        expect(described_class.cached?(uri)).to eq true
+        expect(described_class.cached?(FULL_URI)).to eq true
       end
     end
     context 'when a url has not been cached' do
-      before(:each) { described_class.cache(uri, response) }
+      before(:each) { described_class.cache(FULL_URI, resp) }
       it 'returns true' do
         expect(described_class.cached?(not_cached_uri)).to eq false
       end
@@ -48,22 +48,22 @@ describe Billski::Cache do
       let(:provider) { double('Billski::HashCache') }
       it 'calls cache on the provider' do
         described_class.init(provider)
-        expect(provider).to receive(:cache).with(uri, response)
-        described_class.cache(uri, response)
+        expect(provider).to receive(:cache).with(FULL_URI, resp)
+        described_class.cache(FULL_URI, resp)
       end
 
       it 'returns the cached object' do
         described_class.init
-        expect(described_class.cache(uri, response)).to eq response
+        expect(described_class.cache(FULL_URI, resp)).to eq resp
       end
     end
   end
 
   describe '.get' do
-    before(:each) { described_class.cache(uri, response) }
+    before(:each) { described_class.cache(FULL_URI, resp) }
     context 'when a uri has been cached' do
       it 'returns the cached resource' do
-        expect(described_class.get(uri)).to eq response
+        expect(described_class.get(FULL_URI)).to eq resp
       end
     end
   end

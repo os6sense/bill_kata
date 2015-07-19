@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
+gem 'sinatra-assetpack'
 gem 'haml'
 
 group :development do
@@ -13,8 +14,5 @@ group :development do
 end
 
 group :development, :test do
-  #gem 'capybara'
   gem 'capybara-json'
-  #gem 'poltergeist'
-  #gem 'rack-test'
 end

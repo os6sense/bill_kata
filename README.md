@@ -20,30 +20,22 @@ suspecting a mistake; this makes providing a good UX experience challenging
 if one accepts that these are correctly identified as user groups.
 
 [1] http://www.uxmatters.com/mt/archives/2008/06/better-bills.php
+
+I would also add to this group, information seekers, who use their bills as 
+a way to find information about their service.
+
 # ORIGINAL PROBLEM STATEMENT
 
-# Bill unattended test
-
-## Task
-
-To display a customer's Sky bill
+To display a customer's bill
 
 ## Requirements
 
-* Complete the task in a language of your choice using whatever tools or frameworks that you want.
 * Must consume bill JSON from endpoint: 
 ```
 http://safe-plains-5453.herokuapp.com/bill.json
-```
+
 * JSON must be consumed by a server acting as a proxy.
 * Provide a README on how to run your app or, if you deploy it online, a URL to your app. 
-
-## What we're looking for
-
-* TDD/BDD
-* Simple and eloquent code
-* Knowledge of front end development
-* Bill should be easy to understand (good user experience)
 
 
 

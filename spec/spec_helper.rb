@@ -1,13 +1,4 @@
-require 'webmock/rspec'
-require_relative 'shared_helpers.rb'
-
-WebMock.disable_net_connect!(allow_localhost: true)
-
-RSpec.configure do |config|
-  config.before(:each) do
-    stub_request(:get, HOST_RE)
-      .with(headers: { 'Accept': '*/*', 'User-Agent': 'Ruby' })
-      .to_return(status: 200, body: VALID_BILL, headers: {})
-  end
-end
-
+require 'uri'
+FULL_URI = URI('http://safe-plains-5453.herokuapp.com/bill.json')
+HOST_RE = /herokuapp.com/
+VALID_BILL = File.open('spec/sample_data/valid_bill_1.txt').read()

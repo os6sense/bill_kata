@@ -16,7 +16,8 @@ module Billski
       def_delegators :@provider,
                      :cache,
                      :cached?,
-                     :get
+                     :get,
+                     :clear
 
       def init(provider = HashCache.new)
         @provider = (provider.class == Class ? provider.new : provider)
@@ -32,6 +33,10 @@ module Billski
 
     def cached?(url)
       @cache.key?(url)
+    end
+
+    def clear
+      @cache = {}
     end
 
     def get(url)

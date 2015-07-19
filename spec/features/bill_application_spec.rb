@@ -9,7 +9,11 @@ describe 'root', type: :feature do
 end
 
 describe 'sinatra json providers', type: :feature do
+  # Because in the cache tests a file is cached, we need clear the
+  # cache here since it is preserved when running the suite
+  before(:all) { Billski::Cache.clear }
   before { visit subject  }
+
   describe '/bill/' do
     it 'returns the full bill' do
       expect(page).to have_content('statement')

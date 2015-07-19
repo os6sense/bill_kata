@@ -1,6 +1,7 @@
 require_relative '../lib/provider.rb'
 require_relative '../lib/config.rb'
-require_relative './spec_helper'
+
+require_relative 'webmock_helper'
 
 describe Billski::Provider do
   let(:config) do

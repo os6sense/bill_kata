@@ -1,5 +1,5 @@
 require_relative '../lib/bill.rb'
-require_relative './spec_helper.rb'
+require_relative './webmock_helper.rb'
 
 require 'json'
 

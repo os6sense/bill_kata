@@ -5,10 +5,11 @@ module Billski
   class Application < Sinatra::Base
     configure do
       set :bill_provider, Bill.new
+      enable :logging
     end
 
     get '/' do
-      halt 'ph'
+      halt ''
     end
 
     (Fields::FIELDS << 'bill').each do |name|
