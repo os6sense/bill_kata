@@ -9,10 +9,12 @@ group :development do
   gem 'guard-rspec'
   gem 'rack-livereload'
   gem 'byebug'
+  gem 'webmock'
 end
 
 group :development, :test do
-  gem 'capybara'
-  gem 'poltergeist'
-  gem 'rack-test'
+  #gem 'capybara'
+  gem 'capybara-json'
+  #gem 'poltergeist'
+  #gem 'rack-test'
 end

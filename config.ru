@@ -1,7 +1,9 @@
-require './bill_application.rb'
+require './billski_application.rb'
 
-class BillConfig
-  source_url = "http://safe-plains-5453.herokuapp.com/bill.json"
+map '/v1' do
+  # provide - cache class
+  # config
+
+
+  run Billski::Application
 end
-
-run CustomerBillApplication
