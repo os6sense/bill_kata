@@ -7,9 +7,9 @@ BillingApp.Models.SubsPackage = Backbone.Model.extend({
     subscriptions: { 
       type: '',
       name: '',
-      cost: '0.00'
+      cost: 0.00
     },
-    total: '0.00'
+    total: 0.00
   }
 });
 
