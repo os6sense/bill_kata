@@ -1,3 +1,7 @@
+# REQUIREMENTS
+
+  ruby >= 2.1
+  bower
 
 # INSTALLATON 
 
@@ -5,26 +9,30 @@
 
   run
 
+    bower install
     bundle install
 
 # RUNNING
 
-  bundle exec rackup
+  The simplist way to see the application is navigating to:
+
+    http://librely.com:9292/v1/
+
+
+  If installed locally running
+
+    bundle exec rackup
+
+  and then navigating to 
+
+    http://localhost:9292/v1/
 
 # ORIGINAL PROBLEM STATEMENT
 
 To display a customer's bill
 
-## Requirements
-
-* Must consume bill JSON from endpoint: 
-```
-http://safe-plains-5453.herokuapp.com/bill.json
-
-* JSON must be consumed by a server acting as a proxy.
-* Provide a README on how to run your app or, if you deploy it online, a URL to your app. 
-
 # COMMENTS
+
 I would suggest that a good user experience would require understanding who the
 users are and what their needs are. It has been suggested [1] that there are
 broadly three types of user who should be considered when designing a B2C
