@@ -1,17 +1,138 @@
+!!! 5
+%html{lang:'en'}
+  %head
+    %meta{charset: "utf-8"}
+    %title
+      Your SkiBill 
 
+    /[if IE]
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 
-statement
-Payment due
-period
+    = css :libs
 
-total
+  %body{id: 'home'}
+    .container
 
-Your package
+      .header.h1.text-uppercase
+        Your SKI Bill
+ 
+      .statement.panel.panel-default
+        .panel-body
+          #container-statement
+          %script{type: 'text/template', id: 'template-statement'}
+            .due
+              / TODO: Ensure ISO format dates are being served. 
+              / Remove Date cast
+              Payment is due on the 
+              %span{class: 'date'}
+                %strong
+                  <%= moment(new Date(due)).format("MMMM Do") %>.
+              %span{class: 'period' }
+                It covers the period from 
+                %span{class: 'date'}
+                  <%= moment(new Date(period.from)).format("MMMM Do") %>
+                to 
+                %span{class: 'date'}
+                  <%= moment(new Date(period.to)).format("MMMM Do") %>
 
-callcharges - we want to paginate
+        .panel-footer
+          #container-total.h2.bold
+          %script{type: 'text/template', id: 'template-total'}
+            Total Payment Due : &pound; <%= toMoney(total) %>
 
-skystore
-  rentals: total
-    detail
-  buyand keep: total
-    detail
+      %br
+      .h2.text-uppercase
+        Information About Your Package
+      .package.panel.panel-default
+        .panel-heading
+          .h3
+            %span{class: 'your'}
+              Your Subscriptons
+            %span{id: 'sub_total', class: 'pull-right'}
+        .panel-body
+          #container-package
+          %script{type: 'text/template', id: 'template-package'}
+            %table.table.table-striped
+              %caption
+              %thead
+              %tbody
+                <% _.each(collection, function(model) { %>
+                %tr
+                  %td
+                    <%= model.type %>
+                  %td
+                    <%= model.name %>
+                  %td
+                    %span{class: 'price pull-right'}
+                      &pound; <%= toMoney(model.cost) %>
+                <% }); %>
+            <% $("#sub_total").html("&pound; " + toMoney(total)) %>
+
+      .call-charges.panel.panel-default
+        .panel-heading
+          .h3
+            %span{class: 'your'} 
+              Your Telephone Usage 
+            %span{id: 'cc_total', class: 'pull-right'}
+        .panel-body
+          %a{id: 'cc_button', type: 'button', class: 'btn btn-default btn-xs'}
+            Show Charges
+          #container-callcharges 
+          %script{type: 'text/template', id: 'template-callcharges'}
+            %table.table.table-striped.hidden{id: 'cc_table'}
+              %caption Charges
+              %thead
+              %tbody
+                <% _.each(collection, function(model) { %>
+                %tr
+                  %td
+                    <%= model.called %>
+                  %td
+                    <%= model.duration %>
+                  %td
+                    %span{class: 'price pull-right'}
+                      &pound; <%= toMoney(model.cost) %>
+              <% }); %>
+              <% $("#cc_total").html("&pound; " + toMoney(total)) %>
+
+      .skystore.panel.panel-default
+        .panel-heading
+          .h3
+            %span{class: 'your'} 
+              Your SkiStore Purchases &amp; Rentals
+            %span{id: 'store_total', class: 'pull-right'}
+        .panel-body
+          #container-skystore 
+          %script{type: 'text/template', id: 'template-skystore'}
+            %table.table.table-striped
+              %caption
+                Rentals
+              %thead
+              %tbody
+                <% _.each(rentals, function(model) { %>
+                %tr
+                  %td 
+                    <%= model.title %>
+                  %td 
+                    %span{class: 'price pull-right'}
+                      &pound; <%= toMoney(model.cost) %>
+                <% }); %>
+
+            %table.table.table-striped
+              %caption
+                Buy &amp; Keep
+              %thead
+              %tbody
+                <% _.each(buyandkeep, function(model) { %>
+                %tr
+                  %td
+                    <%= model.title %>
+                  %td
+                    %span{class: 'price pull-right'}
+                      &pound; <%= toMoney(model.cost) %>
+                <% }); %>
+
+            <% $("#store_total").html("&pound; " + toMoney(total)) %>
+
+    = js :libs
+    = js :application

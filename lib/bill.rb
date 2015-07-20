@@ -5,7 +5,7 @@ require_relative './config.rb'
 
 module Billski
   module Fields
-    FIELDS = %w(statement total package call_charges sky_store)
+    FIELDS = %w(statement package call_charges sky_store)
 
     FIELDS.each do |method_name|
       field_name = method_name
@@ -35,6 +35,11 @@ module Billski
     def bill(uri = Config.source_uri)
       return @cache.get(uri) if @cache.cached?(uri)
       @cache.cache(uri, Parser.parse(@provider.json(uri)))
+    end
+
+    # ugly but total is not wrapped when provided by the server
+    def total
+      {total: bill['total'].to_s}
     end
   end
 end

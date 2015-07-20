@@ -38,7 +38,7 @@ describe Billski::Bill do
 
   describe '#total' do
     it 'returns the total section of the bill' do
-      expect(subject.total).to eq valid_bill['total']
+      expect(subject.total).to eq "'total': #{valid_bill['total']}"
     end
   end
 

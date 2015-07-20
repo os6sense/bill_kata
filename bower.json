@@ -15,6 +15,9 @@
   ],
   "dependencies": {
     "backbone": "~1.2.1",
-    "sortable": "~0.6.0"
+    "sortable": "~0.6.0",
+    "bootstrap": "~3.3.0",
+    "jquery": "~2.1.0",
+    "moment": "~2.10.3"
   }
 }
